@@ -5,12 +5,13 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "traffic_patterns"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = %Q{Figure out where your users go}
+    gem.description = %Q{Analyze your rails application's log files to figure out where your users go}
     gem.email = "nick@smartlogicsolutions.com"
     gem.homepage = "http://github.com/ngauthier/traffic_patterns"
     gem.authors = ["Nick Gauthier"]
     gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
+    gem.add_dependency "slow-actions", ">= 0.3.4"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new
