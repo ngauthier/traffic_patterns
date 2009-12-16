@@ -32,11 +32,53 @@ class TestTrafficPatterns < Test::Unit::TestCase
         end
       end
     end
+
+    context "run on a log file with four entries per two sessions" do
+      setup do
+        @tp.parse_file(fixture_file('four_actions.log'))
+      end
+
+      should "have two actions" do
+        assert_equal 2, @tp.actions.size
+      end
+      context "with actions found" do
+        setup do
+          @index = @tp.actions.detect{|a| a.name == "index"}
+          @hl = @tp.actions.detect{|a| a.name == "static_hunters_lodge"}
+        end
+        should "have two exits on index" do
+          assert_equal 2, @index.exits.size
+        end
+        should "have one exit on hunters lodge" do
+          assert_equal 1, @hl.exits.size
+        end
+
+        should "have p(index => index) = 0.50" do
+          @exit = @index.exits.detect{|e|
+            e.destination == @index
+          }
+          assert_not_nil @exit
+          assert_equal 0.50, @exit.probability
+        end
+        should "have p(index => hl) = 0.50" do
+          @exit = @index.exits.detect{|e|
+            e.destination == @hl
+          }
+          assert_not_nil @exit
+          assert_equal 0.50, @exit.probability
+        end
+        should "have p(hl => index) = 1.0" do
+          @exit = @hl.exits.detect{|e|
+            e.destination == @index
+          }
+          assert_not_nil @exit
+          assert_equal 1.0, @exit.probability
+        end
+      end
+
+    end
   end
 
-  should "not fail" do
-    assert true
-  end
 
   private
 

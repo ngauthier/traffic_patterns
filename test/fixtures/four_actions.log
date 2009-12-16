@@ -1,0 +1,54 @@
+Processing UsersController#index (for 76.120.186.153 at 2009-02-23 22:15:07) [GET]
+  Session ID: a0dfedb797521bb9f4749c76bef89d8d
+  Parameters: {"action"=>"index", "controller"=>"users"}
+Redirected to https://play.scavengrnet.com/
+Completed in 0.00010 (10000 reqs/sec) | DB: 0.25601 (256014%) | 302 Found [https://play.scavengrnet.com/hunters_lodge]
+
+
+Processing StaticPagesController#static_hunters_lodge (for 76.120.186.153 at 2009-02-23 22:15:08) [GET]
+  Session ID: a0dfedb797521bb9f4749c76bef89d8d
+  Parameters: {"action"=>"static_hunters_lodge", "controller"=>"static_pages"}
+Redirected to http://play.scavengrnet.com/
+Filter chain halted as [:ensure_proper_protocol] rendered_or_redirected.
+Completed in 0.00010 (10000 reqs/sec) | DB: 0.00000 (0%) | 302 Found [https://play.scavengrnet.com/]
+
+
+Processing UsersController#index (for 76.120.186.153 at 2009-02-23 22:15:07) [GET]
+  Session ID: a0dfedb797521bb9f4749c76bef89d8d
+  Parameters: {"action"=>"index", "controller"=>"users"}
+Redirected to https://play.scavengrnet.com/
+Completed in 0.00010 (10000 reqs/sec) | DB: 0.25601 (256014%) | 302 Found [https://play.scavengrnet.com/hunters_lodge]
+
+Processing UsersController#index (for 76.120.186.153 at 2009-02-23 22:15:07) [GET]
+  Session ID: a0dfedb797521bb9f4749c76bef89d8d
+  Parameters: {"action"=>"index", "controller"=>"users"}
+Redirected to https://play.scavengrnet.com/
+Completed in 0.00010 (10000 reqs/sec) | DB: 0.25601 (256014%) | 302 Found [https://play.scavengrnet.com/hunters_lodge]
+
+Processing UsersController#index (for 76.120.186.153 at 2009-02-23 22:15:07) [GET]
+  Session ID: beta
+  Parameters: {"action"=>"index", "controller"=>"users"}
+Redirected to https://play.scavengrnet.com/
+Completed in 0.00010 (10000 reqs/sec) | DB: 0.25601 (256014%) | 302 Found [https://play.scavengrnet.com/hunters_lodge]
+
+
+Processing StaticPagesController#static_hunters_lodge (for 76.120.186.153 at 2009-02-23 22:15:08) [GET]
+  Session ID: beta
+  Parameters: {"action"=>"static_hunters_lodge", "controller"=>"static_pages"}
+Redirected to http://play.scavengrnet.com/
+Filter chain halted as [:ensure_proper_protocol] rendered_or_redirected.
+Completed in 0.00010 (10000 reqs/sec) | DB: 0.00000 (0%) | 302 Found [https://play.scavengrnet.com/]
+
+
+Processing UsersController#index (for 76.120.186.153 at 2009-02-23 22:15:07) [GET]
+  Session ID: beta
+  Parameters: {"action"=>"index", "controller"=>"users"}
+Redirected to https://play.scavengrnet.com/
+Completed in 0.00010 (10000 reqs/sec) | DB: 0.25601 (256014%) | 302 Found [https://play.scavengrnet.com/hunters_lodge]
+
+Processing UsersController#index (for 76.120.186.153 at 2009-02-23 22:15:07) [GET]
+  Session ID: beta
+  Parameters: {"action"=>"index", "controller"=>"users"}
+Redirected to https://play.scavengrnet.com/
+Completed in 0.00010 (10000 reqs/sec) | DB: 0.25601 (256014%) | 302 Found [https://play.scavengrnet.com/hunters_lodge]
+
