@@ -1,6 +1,6 @@
-= traffic_patterns
+= Traffic Patterns
 
-Description goes here.
+Beep beep!
 
 == Note on Patches/Pull Requests
  
