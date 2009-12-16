@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{traffic_patterns}
-  s.version = "0.0.0"
+  s.version = "0.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Nick Gauthier"]
@@ -24,6 +24,8 @@ Gem::Specification.new do |s|
      "Rakefile",
      "VERSION",
      "lib/traffic_patterns.rb",
+     "test/fixtures/four_actions.log",
+     "test/fixtures/two_actions.log",
      "test/helper.rb",
      "test/test_traffic_patterns.rb",
      "traffic_patterns.gemspec"
@@ -43,15 +45,18 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
-      s.add_development_dependency(%q<thoughtbot-shoulda>, [">= 0"])
+      s.add_development_dependency(%q<shoulda>, [">= 2.10.2"])
       s.add_runtime_dependency(%q<slow-actions>, [">= 0.3.4"])
+      s.add_runtime_dependency(%q<Ruby-yUML>, [">= 0.1.0"])
     else
-      s.add_dependency(%q<thoughtbot-shoulda>, [">= 0"])
+      s.add_dependency(%q<shoulda>, [">= 2.10.2"])
       s.add_dependency(%q<slow-actions>, [">= 0.3.4"])
+      s.add_dependency(%q<Ruby-yUML>, [">= 0.1.0"])
     end
   else
-    s.add_dependency(%q<thoughtbot-shoulda>, [">= 0"])
+    s.add_dependency(%q<shoulda>, [">= 2.10.2"])
     s.add_dependency(%q<slow-actions>, [">= 0.3.4"])
+    s.add_dependency(%q<Ruby-yUML>, [">= 0.1.0"])
   end
 end
 
