@@ -1,4 +1,5 @@
 require 'slow_actions'
+require 'yuml'
 class TrafficPatterns < SlowActions
 
   def parse_file(*args)
@@ -31,6 +32,21 @@ class TrafficPatterns < SlowActions
         e.probability = e.frequency.to_f / total_freq.to_f
       end
     end
+  end
+
+  def to_png(file_path)    
+    tp = self
+    YUML::useCaseDiagram( :scruffy, :scale => 100 ) {
+      tp.actions.each do |a|
+        a.exits.each do |e|
+          source = a.controller.name+"#"+a.name
+          target = e.destination.controller.name+"#"+e.destination.name
+          midpoint = "#{source}_#{target}_#{e.probability}"
+          _(source) > _(midpoint)
+          _(midpoint) >_(target)
+        end
+      end
+    }.to_png( file_path )
   end
 end
 

@@ -12,6 +12,7 @@ begin
     gem.authors = ["Nick Gauthier"]
     gem.add_development_dependency "shoulda", ">= 2.10.2"
     gem.add_dependency "slow-actions", ">= 0.3.4"
+    gem.add_dependency "Ruby-yUML", ">= 0.1.0"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new
@@ -52,3 +53,5 @@ Rake::RDocTask.new do |rdoc|
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
+
+
