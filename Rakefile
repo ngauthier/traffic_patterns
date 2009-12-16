@@ -10,7 +10,7 @@ begin
     gem.email = "nick@smartlogicsolutions.com"
     gem.homepage = "http://github.com/ngauthier/traffic_patterns"
     gem.authors = ["Nick Gauthier"]
-    gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
+    gem.add_development_dependency "shoulda", ">= 2.10.2"
     gem.add_dependency "slow-actions", ">= 0.3.4"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end

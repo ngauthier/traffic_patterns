@@ -25,7 +25,8 @@ Gem::Specification.new do |s|
      "VERSION",
      "lib/traffic_patterns.rb",
      "test/helper.rb",
-     "test/test_traffic_patterns.rb"
+     "test/test_traffic_patterns.rb",
+     "traffic_patterns.gemspec"
   ]
   s.homepage = %q{http://github.com/ngauthier/traffic_patterns}
   s.rdoc_options = ["--charset=UTF-8"]
