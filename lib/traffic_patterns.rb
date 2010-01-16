@@ -49,6 +49,7 @@ class TrafficPatterns < SlowActions
   end
 
   def to_dot
+    nodes = []
     edges = []
     puts 'digraph traffic_patterns {'
     actions.each do |a|
@@ -61,8 +62,15 @@ class TrafficPatterns < SlowActions
           target_label = target.dup
           [source, target].each{|s| s.gsub!(/[^a-z0-9\+]+/i, "x")}
 
-          puts "#{source} [label=\"#{source_label}\"];"
-          puts "#{target} [label=\"#{target_label}\"];"
+          unless nodes.include? source
+            puts "#{source} #{hash_to_dot_opts :label => source_label, :fillcolor => cost_to_color(a.total_cost), :style => :filled};"
+            nodes << source
+          end
+
+          unless nodes.include? target
+            puts "#{target} #{hash_to_dot_opts :label => target_label, :fillcolor => cost_to_color(a.total_cost), :style => :filled};"
+            nodes << target
+          end
         rescue NoMethodError
           next
         end
@@ -74,6 +82,28 @@ class TrafficPatterns < SlowActions
       end
     end
     puts '}'
+  end
+
+  def hash_to_dot_opts(opts)
+    dot = []
+    opts.each do |label, value|
+      dot << "#{label.to_s}=\"#{value.to_s}\""
+    end
+    return "[#{dot.join(" ")}]"
+  end
+
+  def cost_to_color(cost)
+    if cost < 500
+      return "#00FF00"
+    elsif cost < 1000
+      return "#44BB00"
+    elsif cost < 2000
+      return "#888800"
+    elsif cost < 4000
+      return "#BB4400"
+    else
+      return "#FF0000"
+    end
   end
 end
 
