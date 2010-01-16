@@ -1,5 +1,4 @@
 require 'slow_actions'
-require 'yuml'
 class TrafficPatterns < SlowActions
 
   def parse_file(*args)
@@ -47,6 +46,34 @@ class TrafficPatterns < SlowActions
         end
       end
     }.to_png( file_path )
+  end
+
+  def to_dot
+    edges = []
+    puts 'digraph traffic_patterns {'
+    actions.each do |a|
+      a.exits.each do |e|
+        next if e.probability < 0.05
+        begin
+          source = a.controller.name+"#"+a.name
+          source_label = source.dup
+          target = e.destination.controller.name+"#"+e.destination.name
+          target_label = target.dup
+          [source, target].each{|s| s.gsub!(/[^a-z0-9\+]+/i, "x")}
+
+          puts "#{source} [label=\"#{source_label}\"];"
+          puts "#{target} [label=\"#{target_label}\"];"
+        rescue NoMethodError
+          next
+        end
+        edge = "#{source} -> #{target} [label=\"#{(e.probability*100).to_i}%\"];"
+        unless edges.include? edge
+          puts edge
+          edges << edge
+        end
+      end
+    end
+    puts '}'
   end
 end
 
