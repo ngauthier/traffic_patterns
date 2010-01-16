@@ -51,6 +51,7 @@ class TrafficPatterns < SlowActions
   def to_dot
     nodes = []
     edges = []
+    max_count = actions.max{|a, b| a.log_entries.size <=> b.log_entries.size}.log_entries.size
     puts 'digraph traffic_patterns {'
     actions.each do |a|
       a.exits.each do |e|
@@ -63,12 +64,12 @@ class TrafficPatterns < SlowActions
           [source, target].each{|s| s.gsub!(/[^a-z0-9\+]+/i, "x")}
 
           unless nodes.include? source
-            puts "#{source} #{hash_to_dot_opts :label => source_label, :fillcolor => cost_to_color(a.total_cost), :style => :filled};"
+            puts "#{source} #{hash_to_dot_opts :label => source_label, :fillcolor => cost_to_color(a.total_cost), :style => :filled, :shape => :rectangle, :fontsize => count_to_size(a.log_entries.size, max_count)};"
             nodes << source
           end
 
           unless nodes.include? target
-            puts "#{target} #{hash_to_dot_opts :label => target_label, :fillcolor => cost_to_color(a.total_cost), :style => :filled};"
+            puts "#{target} #{hash_to_dot_opts :label => target_label, :fillcolor => cost_to_color(a.total_cost), :style => :filled, :shape => :rectangle, :fontsize => count_to_size(a.log_entries.size, max_count)};"
             nodes << target
           end
         rescue NoMethodError
@@ -103,6 +104,33 @@ class TrafficPatterns < SlowActions
       return "#BB4400"
     else
       return "#FF0000"
+    end
+  end
+
+  def count_to_size(count, max_count)
+    percentile = count.to_f/max_count.to_f
+    if percentile < 0.005
+      return "8.0"
+    elsif percentile < 0.01
+      return "10.0"
+    elsif percentile < 0.05
+      return "12.0"
+    elsif percentile < 0.10
+      return "14.0"
+    elsif percentile < 0.20
+      return "16.0"
+    elsif percentile < 0.30
+      return "18.0"
+    elsif percentile < 0.40
+      return "20.0"
+    elsif percentile < 0.60
+      return "22.0"
+    elsif percentile < 0.75
+      return "24.0"
+    elsif percentile < 0.85
+      return "26.0"
+    else
+      return "28.0"
     end
   end
 end
